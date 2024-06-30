@@ -4,6 +4,7 @@ import "./globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import QueryProvider from "@/providers/query-provider";
 import ApiProvider from "@/providers/api-provider";
+import SplashScreen from "@/components/splash-screen/splash-screen";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={rubik.className}>
         <QueryProvider>
-          <ApiProvider>{children}</ApiProvider>
+          <ApiProvider>
+            <SplashScreen>{children}</SplashScreen>
+          </ApiProvider>
         </QueryProvider>
       </body>
     </html>
