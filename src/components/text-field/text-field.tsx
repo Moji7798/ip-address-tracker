@@ -18,7 +18,8 @@ const textField = cva("", {
     {
       color: "primary",
       disabled: false,
-      className: "bg-white border border-gray-300",
+      className:
+        "bg-white shadow-sm [&>input]:placeholder:text-gray-600 [&>input]:text-xs",
     },
     {
       color: "secondary",
@@ -38,20 +39,32 @@ export type TextFieldProps = ComponentProps<"input"> & {
 } & VariantProps<typeof textField>;
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
-  const { color, disabled, endAdornment, className } = props;
+  const { color, disabled, endAdornment, className, ...otherProps } = props;
 
-  // hooks
   const { getRootProps } = useInput();
 
   return (
     <div
       className={cn(
         textField({ color, disabled }),
-        "w-full relative flex items-center px-3.5 py-3 rounded-lg"
+        "relative flex items-center ps-3.5 h-12 rounded-lg",
+        className
       )}
     >
-      <Input {...getRootProps()} ref={ref} />
-      {endAdornment && <div className="ms-1">{endAdornment}</div>}
+      <Input
+        {...getRootProps()}
+        {...otherProps}
+        ref={ref}
+        slotProps={{
+          input: {
+            className: "outline-none border-none grow w-full",
+          },
+          root: {
+            className: "grow",
+          },
+        }}
+      />
+      {endAdornment}
     </div>
   );
 });
