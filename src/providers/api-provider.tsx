@@ -14,7 +14,10 @@ export default function ApiProvider({ children }: { children?: ReactNode }) {
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
     // Add the apikey to the request url
+    console.log(config);
+
     config.params = {
+      ...config.params,
       apiKey,
     };
 
