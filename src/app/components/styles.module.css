@@ -1,0 +1,27 @@
+.cover {
+  background-image: url("/images/pattern-bg-desktop.png");
+  background-image: -webkit-image-set(
+    url("/images/pattern-bg-desktop.png") 1x,
+    url("/images/pattern-bg-mobile.png") 2x
+  );
+  background-image: image-set(
+    url("/images/pattern-bg-desktop.png") 1x,
+    url("/images/pattern-bg-mobile.png") 2x
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.mapWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  min-height: 50vh;
+}
+
+.map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
